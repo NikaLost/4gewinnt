@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 public class Controller {
-    private MeineFachklasse mFk = new MeineFachklasse();
+    private Spiel spiel = new Spiel();
     
     @FXML
     GridPane spielfeld;
