@@ -1,6 +1,6 @@
 
 /**
- * Das klassische Spielbrett eines 4-gewinnt Spiels besteht aus insgesamt 48 Feldern in 7 Spalten und 6 Zeilen.
+ * Das klassische Spielbrett eines 4-gewinnt Spiels besteht aus insgesamt 42 Feldern in 7 Spalten und 6 Zeilen.
  * 
  *      ====================== Spielbrett =======================
  * 
@@ -49,7 +49,7 @@ public class Spielbrett
      * @return      false, falls die Spalte voll ist oder die übergebenen Parameter ungültig sind.
      *              true, wenn der Spielstein erfolgreich platziert wurde.
      */
-    public boolean einwerfen(Spielstein stein, int spalte) {
+    public boolean platzieren(Spielstein stein, int spalte) {
         boolean platziert = false;
         
         //überprüfe, ob Paramter gültig sind, und ob Spalte bereits voll ist

@@ -1,33 +1,43 @@
+import java.util.Stack;
 
 /**
- * Beschreiben Sie hier die Klasse Spieler.
+ * Ein Spieler des 4-gewinnt Spiels hat einen Namen und eine Menge an gleichfarbigen Spielsteinen.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Dominik F, Kai M, Kai S
+ * @version 15.06.2021
  */
 public class Spieler
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    private String name;
+    private Stack<Spielstein> inventar;
+    private Farbe farbe;
 
     /**
      * Konstruktor für Objekte der Klasse Spieler
      */
-    public Spieler()
+    public Spieler(String name, Farbe farbe, int anzahlSpielsteine)
     {
-        // Instanzvariable initialisieren
-        x = 0;
+        this.name = name;
+        this.farbe = farbe;
+        this.inventar = new Stack();
+        initSpielsteine(anzahlSpielsteine);
+    }
+    
+    /**
+     * Wirft einen Spielstein in das entsprechende Spielbrett an der gegebenen Spalte ein. Der Spielstein wird
+     * dann aus dem Inventar entfernt. Falls das Inventar vorher leer war, kann kein Spielstein eingeworfen werden.
+     */
+    public boolean einwerfenIn(Spielbrett brett, int spalte) {
+        if (inventar.size() > 0) {
+            return brett.platzieren(inventar.pop(), spalte);
+        }
+        return false;
     }
 
-    /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
-     */
-    public int beispielMethode(int y)
-    {
-        // tragen Sie hier den Code ein
-        return x + y;
+    
+    private void initSpielsteine(int anzahl) {
+        for (int i = 0; i < anzahl; i++) {
+            inventar.push(new Spielstein(farbe));
+        }
     }
 }
