@@ -1,33 +1,20 @@
 
 /**
- * Beschreiben Sie hier die Klasse Spielstein.
+ * Ein Spielstein eines 4-gewinnt Spiels hat eine eindeutige Farbe, die einem eindeutigen Spieler zugeordnet
+ * werden kann.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Dominik F, Kai M, Kai S
+ * @version 15.06.2021
  */
 public class Spielstein
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    private Farbe farbe;
 
     /**
      * Konstruktor für Objekte der Klasse Spielstein
      */
-    public Spielstein()
+    public Spielstein(Farbe farbe)
     {
-        // Instanzvariable initialisieren
-        x = 0;
-    }
-
-    /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
-     */
-    public int beispielMethode(int y)
-    {
-        // tragen Sie hier den Code ein
-        return x + y;
+        this.farbe = farbe;
     }
 }

@@ -1,33 +1,33 @@
 
 /**
- * Beschreiben Sie hier die Klasse Feld.
+ * Ein Feld für ein 4-gewinnt Spielbrett ist ein einfacher Platzhalter für einen Spielstein.
+ * Ein Feld ist entweder frei oder durch einen Spielstein besetzt.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Dominik F, Kai M, Kai S
+ * @version 15.06.2021
  */
 public class Feld
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    private Spielstein stein;
 
     /**
      * Konstruktor für Objekte der Klasse Feld
      */
     public Feld()
     {
-        // Instanzvariable initialisieren
-        x = 0;
+    }
+    
+    public void platziere(Spielstein stein) {
+        this.stein = stein;
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * Gibt an, ob dieses feld bereits durch einen Spielstein besetzt ist.
      * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * @return        true, falls in diesem Feld kein Spielstein liegt, andernfalls false
      */
-    public int beispielMethode(int y)
+    public boolean istFrei()
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+        return stein == null;
     }
 }
