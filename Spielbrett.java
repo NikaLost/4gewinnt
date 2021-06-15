@@ -32,6 +32,7 @@ public class Spielbrett
     public static final int SPALTEN = 7;
     public static final int OBERSTE_ZEILE = ZEILEN - 1;
     public static final int UNTERSTE_ZEILE = 0;
+    private int freieFelder;
 
     /**
      * Konstruktor für Objekte der Klasse Spielbrett
@@ -39,6 +40,7 @@ public class Spielbrett
     public Spielbrett()
     {
         initSpielbrett();
+        freieFelder = ZEILEN * SPALTEN;
     }
     
     /**
@@ -49,21 +51,32 @@ public class Spielbrett
      */
     public boolean einwerfen(Spielstein stein, int spalte) {
         boolean platziert = false;
+        
+        //überprüfe, ob Paramter gültig sind, und ob Spalte bereits voll ist
         if (spalte < 0 || SPALTEN - spalte <= 0 || istVoll(spalte)) {
             return platziert;
         } else {
+            //gehe die Spalte zeilenweise von unten nach oben durch und platziere auf nächsten freien Feld
             int zeile = UNTERSTE_ZEILE;
-            while (!platziert && zeile >= UNTERSTE_ZEILE) {
+            while (!platziert && zeile < OBERSTE_ZEILE) {
                 Feld feld = felder[zeile][spalte];
                 if (feld.istFrei()) {
                     feld.platziere(stein);
                     platziert = true;
+                    freieFelder -= 1;
                 } else {
                     zeile += 1;
                 }
             }
         }
         return platziert;
+    }
+    
+    /**
+     * Gibt an, ob alle Felder des Spielbretts besetzt sind.
+     */
+    public boolean istVollBesetzt() {
+        return freieFelder == 0;
     }
 
     
