@@ -34,11 +34,11 @@ public class Controller {
                 alert.setHeaderText(spiel.amZug().gibName() 
                 + " leider ist diese Spalte schon voll");
                 alert.showAndWait();
-            }
-            
-        
+            } else {
             // Vorläufige Platzierung von Steinen
-            spielfeld.add(new SpielSteinView(spiel.amZug().gibFarbe()), spalte, 6);
+            spielfeld.add(new SpielSteinView(spiel.amZug().gibFarbe()), spalte,
+            spielfeld.getRowCount() - spiel.gibSpielbrett().gibErstesFreiesFeld(spalte));
+            }
         }
 
     }

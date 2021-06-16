@@ -32,6 +32,7 @@ public class Spielbrett
     public static final int SPALTEN = 7;
     public static final int OBERSTE_ZEILE = ZEILEN - 1;
     public static final int UNTERSTE_ZEILE = 0;
+    private int erstesFreiesFeld[];
     private int freieFelder;
     private boolean gewinnReihe;
 
@@ -54,7 +55,7 @@ public class Spielbrett
         boolean platziert = false;
         
         //überprüfe, ob Paramter gültig sind, und ob Spalte bereits voll ist
-        if (spalte < 0 || SPALTEN - spalte <= 0 || istVoll(spalte)) {
+        if (spalte < 0 || SPALTEN - spalte < 0 || istVoll(spalte)) {
             this.ausgabe();
             return platziert;
         } else {
@@ -67,6 +68,7 @@ public class Spielbrett
                     gewinnReihe = checkGewinnfolge(zeile, spalte, stein.gibFarbe(), Spiel.STANDARD_ANZ_GEWINN);
                     platziert = true;
                     freieFelder -= 1;
+                    erstesFreiesFeld[spalte] = erstesFreiesFeld[spalte] + 1; 
                 } else {
                     zeile += 1;
                 }
@@ -194,11 +196,16 @@ public class Spielbrett
      */
     private void initSpielbrett() {
         felder = new Feld[ZEILEN][SPALTEN];
+        erstesFreiesFeld = new int[SPALTEN];
         for (int i = 0; i < ZEILEN; i++) {
             for (int j = 0; j < SPALTEN; j++) {
                 felder[i][j] = new Feld();
             }
         }
+    }
+    
+    public int gibErstesFreiesFeld(int spalte) {
+        return erstesFreiesFeld[spalte];    
     }
     
     
