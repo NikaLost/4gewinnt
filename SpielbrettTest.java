@@ -99,8 +99,40 @@ public class SpielbrettTest
         brett.platzieren(steinR, 2);
         brett.platzieren(steinR, 3);
         brett.platzieren(steinR, 3);
+        brett.platzieren(steinR, 3);
         assertFalse(brett.gewinnReihe());
         brett.platzieren(steinR, 3);
+        assertTrue(brett.gewinnReihe());
+    }
+    
+    @Test
+    public void testDiagonaleGewinnLücke() {
+        brett.platzieren(steinG, 0);
+        brett.platzieren(steinG, 0);
+        brett.platzieren(steinR, 0);
+        brett.platzieren(steinR, 0);
+        brett.platzieren(steinR, 0);
+        brett.platzieren(steinG, 0);
+        brett.platzieren(steinR, 1);
+        brett.platzieren(steinR, 1);
+        brett.platzieren(steinG, 1);
+        brett.platzieren(steinR, 1);
+        brett.platzieren(steinG, 1);
+        brett.platzieren(steinG, 1);
+        brett.platzieren(steinR, 2);
+        brett.platzieren(steinR, 2);
+        brett.platzieren(steinG, 2);
+        brett.platzieren(steinR, 2);
+        brett.platzieren(steinG, 2);
+        brett.platzieren(steinG, 3);
+        brett.platzieren(steinG, 3);
+        brett.platzieren(steinR, 3);
+        brett.platzieren(steinR, 4);
+        brett.platzieren(steinR, 4);
+        brett.platzieren(steinG, 4);
+        brett.platzieren(steinG, 5);
+        assertFalse(brett.gewinnReihe());
+        brett.platzieren(steinG, 3);
         assertTrue(brett.gewinnReihe());
     }
 
