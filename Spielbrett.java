@@ -210,16 +210,16 @@ public class Spielbrett
     
     
     public void ausgabe( ){
-	for (int i = felder.length - 1; i >= 0; i--){
-		for (int j = 0; j < felder[i].length; j++){
-			if ( felder[i][j].istFrei()){
-				System.out.print("-|");
-			} else System.out.print(" *|");
-		}
-		System.out.println();
-			
-			
-	}
-	System.out.println("----------------------------------------------------");	
+    for (int i = felder.length - 1; i >= 0; i--){
+        for (int j = 0; j < felder[i].length; j++){
+            if ( felder[i][j].istFrei()){
+                System.out.print("-|");
+            } else System.out.print(" *|");
+        }
+        System.out.println();
+            
+            
+    }
+    System.out.println("----------------------------------------------------");    
     }
 }
