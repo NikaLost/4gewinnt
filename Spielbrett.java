@@ -33,6 +33,7 @@ public class Spielbrett
     public static final int OBERSTE_ZEILE = ZEILEN - 1;
     public static final int UNTERSTE_ZEILE = 0;
     private int freieFelder;
+    private boolean gewinnReihe;
 
     /**
      * Konstruktor für Objekte der Klasse Spielbrett
@@ -62,6 +63,7 @@ public class Spielbrett
                 Feld feld = felder[zeile][spalte];
                 if (feld.istFrei()) {
                     feld.platziere(stein);
+                    gewinnReihe = checkGewinnfolge(zeile, spalte, stein.gibFarbe(), Spiel.STANDARD_ANZ_GEWINN);
                     platziert = true;
                     freieFelder -= 1;
                 } else {
@@ -78,7 +80,105 @@ public class Spielbrett
     public boolean istVollBesetzt() {
         return freieFelder == 0;
     }
-
+    
+    public boolean gewinnReihe() {
+        return gewinnReihe;
+    }
+    
+    private boolean checkGewinnfolge(int z, int s, Farbe farbe, int anzahlGewinn) {
+        return checkHorizontal(z, s, farbe, anzahlGewinn) 
+                || checkVertikal(z, s, farbe, anzahlGewinn) 
+                || checkDiagonal(z, s, farbe, anzahlGewinn);
+    }
+    
+    private boolean checkHorizontal(int z, int s, Farbe farbe, int anzahlGewinn) {
+        int gesamt = 1;
+        //horizontal rechts
+        int i = 1;
+        while (i <= anzahlGewinn && (s + i) < SPALTEN && !felder[z][s + i].istFrei() 
+            && felder[z][s + i].gibStein().gibFarbe().equals(farbe)) {
+            gesamt += 1;
+            i++;
+        }
+        //horizontal links
+        i = 1;
+        while (i <= anzahlGewinn && (s - i) >= 0  && !felder[z][s - i].istFrei() 
+            && felder[z][s - i].gibStein().gibFarbe().equals(farbe)) {
+            gesamt += 1;
+            i++;
+        }
+        if (gesamt >= anzahlGewinn) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    private boolean checkVertikal(int z, int s, Farbe farbe, int anzahlGewinn) {
+        int gesamt = 1;
+        //vertikal oben... braucht man eig nicht
+        int i = 1;
+        while (i <= anzahlGewinn && (z + i) < ZEILEN && !felder[z + i][s].istFrei()
+            && felder[z + i][s].gibStein().gibFarbe() == farbe) {
+            gesamt += 1;
+            i++;
+        }
+        //vertikal unten
+        i = 1;
+        while (i <= anzahlGewinn && (z - i) >= 0 && !felder[z - i][s].istFrei()
+            && felder[z - i][s].gibStein().gibFarbe() == farbe) {
+            gesamt += 1;
+            i++;
+        }
+        if (gesamt == anzahlGewinn) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    private boolean checkDiagonal(int z, int s, Farbe farbe, int anzahlGewinn) {
+        int gesamt = 1;
+        //diagonal nach rechtes oben
+        int i = 1;
+        while (i <= anzahlGewinn && (z + i) < ZEILEN && (s + i) < SPALTEN && !felder[z + i][s + i].istFrei()
+            && felder[z + i][s + i].gibStein().gibFarbe() == farbe) {
+            gesamt += 1;
+            i++;
+        }
+        //diagonal nach links unten
+        i = 1;
+        while (i <= anzahlGewinn && (z - i) >= 0 && (s - i) >= 0 && !felder[z - i][s - i].istFrei()
+            && felder[z - i][s - i].gibStein().gibFarbe() == farbe) {
+            gesamt += 1;
+            i++;
+        }
+        if (gesamt == anzahlGewinn) {
+            return true;
+        }
+        
+        
+        gesamt = 1;
+        //diagonal nach links oben
+        i = 1;
+        while (i <= anzahlGewinn && (z + i) < ZEILEN && (s - i) >= 0 && !felder[z + i][s - i].istFrei()
+            && felder[z + i][s - i].gibStein().gibFarbe() == farbe) {
+            gesamt += 1;
+            i++;
+        }
+        //diagonal nach rechts unten
+        i = 1;
+        while (i <= anzahlGewinn && (z - i) >= 0 && (s + i) < SPALTEN && !felder[z - i][s + i].istFrei()
+            && felder[z - i][s + i].gibStein().gibFarbe() == farbe) {
+            gesamt += 1;
+            i++;
+        }
+        if (gesamt == anzahlGewinn) {
+            return true;
+        }
+        
+        return false;
+    }
     
     /**
      * Falls ein Spielstein in der obersten Zeile einer Spalte liegt, ist die Spalte voll.

@@ -17,4 +17,8 @@ public class Spielstein
     {
         this.farbe = farbe;
     }
+    
+    public Farbe gibFarbe() {
+        return this.farbe;
+    }
 }

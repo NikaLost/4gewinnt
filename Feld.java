@@ -16,11 +16,10 @@ public class Feld
      */
     public Feld()
     {
-        this.folge = new int[4]; //in 2D -> 4 Möglichkeiten: horizontal, vertikal, diagonal+, diagonal-
     }
     
     public void platziere(Spielstein stein) {
-        this.stein = stein;
+        this.stein = stein;        
     }
 
     /**
@@ -31,5 +30,9 @@ public class Feld
     public boolean istFrei()
     {
         return stein == null;
+    }
+    
+    public Spielstein gibStein() {
+        return this.stein;
     }
 }

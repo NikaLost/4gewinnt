@@ -10,10 +10,12 @@ public class Spiel
 {
     public static final int ANZ_SPIELER = 2;
     public static final int STANDARD_ANZ_SPIELSTEINE = 21;
+    public static final int STANDARD_ANZ_GEWINN = 4;
     private Spieler[] spieler;
     private Spielbrett spielbrett;
     private int amZug;
     private LinkedList<Farbe> farbenAuswahl;
+    private Spieler gewinner;
     
     
     Spiel() {
@@ -36,7 +38,11 @@ public class Spiel
     
     public void einwerfen (int spalte) {
         if (spieler[amZug].einwerfenIn(spielbrett, spalte)) {
-            naechsterSpieler();
+            if (spielbrett.gewinnReihe()) {
+                gewinner = spieler[amZug];
+            } else {
+                naechsterSpieler();
+            }
         }
     }
     
