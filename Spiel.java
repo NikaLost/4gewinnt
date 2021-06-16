@@ -19,6 +19,7 @@ public class Spiel
     Spiel() {
         this.spieler = new Spieler[ANZ_SPIELER];
         this.spielbrett = new Spielbrett();
+        this.farbenAuswahl = new LinkedList();
         amZug = 0;
         for (Farbe farbe : Farbe.values()) {
             farbenAuswahl.add(farbe);

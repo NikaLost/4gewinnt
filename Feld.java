@@ -9,12 +9,14 @@
 public class Feld
 {
     private Spielstein stein;
+    private int[] folge;
 
     /**
      * Konstruktor für Objekte der Klasse Feld
      */
     public Feld()
     {
+        this.folge = new int[4]; //in 2D -> 4 Möglichkeiten: horizontal, vertikal, diagonal+, diagonal-
     }
     
     public void platziere(Spielstein stein) {
