@@ -14,22 +14,22 @@
    <children>
       <GridPane fx:id="spielfeld" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" valignment="CENTER" minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" valignment="CENTER" minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" valignment="CENTER" minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" valignment="CENTER" minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" valignment="CENTER" minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" valignment="CENTER" minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <ImageView fitHeight="57.14" fitWidth="57.14" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
@@ -245,13 +245,13 @@
                   <Image url="@feld.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="3" />
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="4" />
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="5" />
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="6" />
-            <Button mnemonicParsing="false" text="Button" />
+            <Button fx:id="b3" mnemonicParsing="false" text="Button" GridPane.columnIndex="3" onAction="#addStein"/>
+            <Button fx:id="b1" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" onAction="#addStein"/>
+            <Button fx:id="b2" mnemonicParsing="false" text="Button" GridPane.columnIndex="2" onAction="#addStein"/>
+            <Button fx:id="b4" mnemonicParsing="false" text="Button" GridPane.columnIndex="4" onAction="#addStein"/>
+            <Button fx:id="b5" mnemonicParsing="false" text="Button" GridPane.columnIndex="5" onAction="#addStein"/>
+            <Button fx:id="b6" mnemonicParsing="false" text="Button" GridPane.columnIndex="6" onAction="#addStein"/>
+            <Button fx:id="b0" mnemonicParsing="false" text="Button" GridPane.columnIndex="0" onAction="#addStein"/>
          </children>
       </GridPane>
    </children>

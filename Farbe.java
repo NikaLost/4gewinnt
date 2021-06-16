@@ -8,5 +8,16 @@
  */
 public enum Farbe
 {
-    GELB, ROT;
+    GELB("yellow"), ROT("red");
+    
+    String farbe;
+    
+    Farbe (String farbe) {
+        this.farbe =farbe;
+    }
+    
+    @Override
+    public String toString() {
+        return farbe;
+    }
 }
