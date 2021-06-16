@@ -33,6 +33,18 @@ public class Spieler
         }
         return false;
     }
+    
+    public String gibName() {
+        return this.name;
+    }
+    
+    public Farbe gibFarbe() {
+        return this.farbe;
+    }
+    
+    public int gibAnzSpielsteine() {
+        return this.inventar.size();
+    }
 
     
     private void initSpielsteine(int anzahl) {
