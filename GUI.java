@@ -26,7 +26,7 @@ public class GUI extends Application {
             
             // Fenster festlegen
             primaryStage.setScene(scene);
-            primaryStage.setTitle("4 gewinnt");
+            primaryStage.setTitle("4 aus");
             primaryStage.centerOnScreen();
             primaryStage.setOnCloseRequest(event ->
                 {
