@@ -55,11 +55,12 @@ public class Spielbrett
         
         //überprüfe, ob Paramter gültig sind, und ob Spalte bereits voll ist
         if (spalte < 0 || SPALTEN - spalte <= 0 || istVoll(spalte)) {
+            this.ausgabe();
             return platziert;
         } else {
             //gehe die Spalte zeilenweise von unten nach oben durch und platziere auf nächsten freien Feld
             int zeile = UNTERSTE_ZEILE;
-            while (!platziert && zeile < OBERSTE_ZEILE) {
+            while (!platziert && zeile <= OBERSTE_ZEILE) {
                 Feld feld = felder[zeile][spalte];
                 if (feld.istFrei()) {
                     feld.platziere(stein);
@@ -71,6 +72,7 @@ public class Spielbrett
                 }
             }
         }
+        this.ausgabe();
         return platziert;
     }
     
@@ -199,4 +201,18 @@ public class Spielbrett
         }
     }
     
+    
+    public void ausgabe( ){
+	for (int i = felder.length - 1; i >= 0; i--){
+		for (int j = 0; j < felder[i].length; j++){
+			if ( felder[i][j].istFrei()){
+				System.out.print("-|");
+			} else System.out.print(" *|");
+		}
+		System.out.println();
+			
+			
+	}
+	System.out.println("----------------------------------------------------");	
+    }
 }

@@ -37,14 +37,17 @@ public class Spiel
         }
     }
     
-    public void einwerfen (int spalte) {
+    public boolean einwerfen (int spalte) {
         if (spieler[amZug].einwerfenIn(spielbrett, spalte)) {
             if (spielbrett.gewinnReihe()) {
                 gewinner = spieler[amZug];
+                System.out.println("test");
             } else {
                 naechsterSpieler();
             }
+            return true;
         }
+        return false;
     }
     
     public Spieler amZug() {
@@ -53,6 +56,10 @@ public class Spiel
     
     public void naechsterSpieler() {
         amZug = (amZug + 1) % ANZ_SPIELER;
+    }
+    
+    public Spielbrett gibSpielbrett() {
+        return this.spielbrett;
     }
     
     

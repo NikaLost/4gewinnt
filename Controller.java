@@ -6,7 +6,7 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.*;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import java.util.Optional;
 
 
@@ -28,9 +28,15 @@ public class Controller {
         int spalte = spielfeld.getColumnIndex(gedrückt);
         
         if (spiel.amZug() != null) {
-            spiel.einwerfen(spalte);
+            if (!spiel.einwerfen(spalte)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Fehler");
+                alert.setHeaderText(spiel.amZug().gibName() 
+                + " leider ist diese Spalte schon voll");
+                alert.showAndWait();
+            }
+            
         
-            SpielSteinView stein = new SpielSteinView(Farbe.GELB);
             // Vorläufige Platzierung von Steinen
             spielfeld.add(new SpielSteinView(spiel.amZug().gibFarbe()), spalte, 6);
         }
@@ -39,7 +45,7 @@ public class Controller {
     
     @FXML
     public void spielerHinzufugen() {
-        TextInputDialog dialog = new TextInputDialog("");
+        TextInputDialog dialog = new TextInputDialog("Spielername");
         dialog.setHeaderText("Gib den Namen des Spielers ein");
 
         Optional<String> result = dialog.showAndWait();
