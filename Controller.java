@@ -5,14 +5,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
-import javafx.scene.Node;
+import javafx.scene.*;
+import javafx.scene.control.TextInputDialog;
+import java.util.Optional;
 
 
 public class Controller {
     private Spiel spiel = new Spiel();
     
     @FXML
-    GridPane spielfeld;
+    private GridPane spielfeld;
         
     
     
@@ -22,12 +24,28 @@ public class Controller {
      */
     @FXML
     public void addStein(ActionEvent event) {
-        Button pressed = (Button) event.getSource();
-        int column = spielfeld.getColumnIndex(pressed);
-        SpielSteinView stein = new SpielSteinView(Farbe.GELB);
-        // Vorläufige Platzierung von Steinen
-        spielfeld.add(new SpielSteinView(Farbe.GELB), column, 6);
+        Button gedrückt = (Button) event.getSource();
+        int spalte = spielfeld.getColumnIndex(gedrückt);
+        
+        if (spiel.amZug() != null) {
+            spiel.einwerfen(spalte);
+        
+            SpielSteinView stein = new SpielSteinView(Farbe.GELB);
+            // Vorläufige Platzierung von Steinen
+            spielfeld.add(new SpielSteinView(spiel.amZug().gibFarbe()), spalte, 6);
+        }
 
+    }
+    
+    @FXML
+    public void spielerHinzufugen() {
+        TextInputDialog dialog = new TextInputDialog("");
+        dialog.setHeaderText("Gib den Namen des Spielers ein");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            spiel.addSpieler(result.get());
+        }
     }
 
     

@@ -32,6 +32,7 @@ public class Spiel
         for (int i = 0; i < spieler.length; i++) {
             if (spieler[i] == null) {
                 spieler[i] = new Spieler(name, farbenAuswahl.remove(), STANDARD_ANZ_SPIELSTEINE);
+                break;
             }
         }
     }
