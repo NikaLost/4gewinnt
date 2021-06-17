@@ -10,8 +10,8 @@ import javafx.scene.control.*;
 import java.util.Optional;
 
 
-public class Controller {
-    private Spiel spiel = new Spiel();
+public class ControllerSpiel {
+    private Spiel spiel;
     
     @FXML
     private GridPane spielfeld;
@@ -48,18 +48,10 @@ public class Controller {
                 }
             }
         }
-
     }
     
-    @FXML
-    public void spielerHinzufugen() {
-        TextInputDialog dialog = new TextInputDialog("Spielername");
-        dialog.setHeaderText("Gib den Namen des Spielers ein");
-
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()) {
-            spiel.addSpieler(result.get());
-        }
+    public void initDaten(Spiel spiel) {
+        this.spiel = spiel;
     }
 
     

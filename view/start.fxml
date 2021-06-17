@@ -21,7 +21,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Modus">
             <items>
-                  <CheckMenuItem disable="true" mnemonicParsing="false" selected="true" text="Normal" />
+                  <CheckMenuItem mnemonicParsing="false" selected="true" text="Normal" />
             </items>
           </Menu>
         </menus>
@@ -33,10 +33,10 @@
             <Font name="Segoe UI Italic" size="28.0" />
          </font>
       </Text>
-      <Text layoutX="199.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="curNumPlayers" layoutX="199.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Text layoutX="218.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="von" />
-      <Text layoutX="248.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
-      <Button layoutX="210.0" layoutY="312.0" mnemonicParsing="false" text="LOS!">
+      <Text fx:id="maxNumPlayers" layoutX="248.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
+      <Button fx:id="losButton" layoutX="210.0" layoutY="312.0" mnemonicParsing="false" onAction="#spielStarten" text="LOS!">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
