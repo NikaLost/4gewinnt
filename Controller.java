@@ -36,8 +36,16 @@ public class Controller {
                 alert.showAndWait();
             } else {
             // Vorläufige Platzierung von Steinen
-            spielfeld.add(new SpielSteinView(spiel.amZug().gibFarbe()), spalte,
-            spielfeld.getRowCount() - spiel.gibSpielbrett().gibErstesFreiesFeld(spalte));
+                spielfeld.add(new SpielSteinView(spiel.amZug().gibFarbe()), spalte,
+                spielfeld.getRowCount() - spiel.gibSpielbrett().gibErstesFreiesFeld(spalte));
+            
+                if (spiel.gibGewinner() != null) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Herzlichen Glückwunsch");
+                    alert.setHeaderText(spiel.amZug().gibName() 
+                    + " hat das Spiel gewonnen.");
+                    alert.showAndWait();
+                }
             }
         }
 

@@ -41,7 +41,6 @@ public class Spiel
         if (spieler[amZug].einwerfenIn(spielbrett, spalte)) {
             if (spielbrett.gewinnReihe()) {
                 gewinner = spieler[amZug];
-                System.out.println("test");
             } else {
                 naechsterSpieler();
             }
@@ -62,5 +61,7 @@ public class Spiel
         return this.spielbrett;
     }
     
-    
+    public Spieler gibGewinner() {
+        return this.gewinner;
+    }
 }
