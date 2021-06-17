@@ -87,6 +87,10 @@ public class ControllerStart {
             alert.setHeaderText("Es sind noch nicht genügend Spieler. Füge weitere Spieler hinzu.");
             alert.showAndWait();
         } else {
+            spiel = new Spiel();
+            for (String spielerName : spielerNamen) {
+                spiel.addSpieler(spielerName);
+            }
             erstelleSpielfenster();
         }
     }
@@ -97,13 +101,13 @@ public class ControllerStart {
              * Hier wird die FXML-Datei, die ihr mit dem SceneBuilder erstellt habt, geladen.
              * Der Dateiname muss ggf. von euch angepasst werden:
              */
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/spielfeld.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/spielfeldNew.fxml"));
             
             /*#
              * Verwendet ihr einen anderen Container als "Haupt-Container" (z.B. eine Pane), so muessen
              * die naechsten zwei Zeilen angepasst werden:
              */
-            VBox root = (VBox) loader.load();
+            Pane root = (Pane) loader.load();
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             

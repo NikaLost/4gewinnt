@@ -14,7 +14,7 @@
    <children>
       <Text layoutX="50.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4 gewinnt">
          <font>
-            <Font name="Comic Sans MS" size="43.0" />
+            <Font name="Comic Sans MS Bold" size="43.0" />
          </font>
       </Text>
       <MenuBar layoutX="26.0" layoutY="323.0">
