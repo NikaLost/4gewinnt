@@ -9,7 +9,6 @@
 public class Feld
 {
     private Spielstein stein;
-    private int[] folge;
 
     /**
      * Konstruktor für Objekte der Klasse Feld
