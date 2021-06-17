@@ -45,8 +45,10 @@ public class ControllerSpiel {
         }
         Button gedrückt = (Button) event.getSource();
         int spalte = spielfeld.getColumnIndex(gedrückt);
+    
         
         if (spiel.amZug() != null) {
+            Farbe farbe = spiel.amZug().gibFarbe();
             if (!spiel.einwerfen(spalte)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Fehler");
@@ -55,7 +57,7 @@ public class ControllerSpiel {
                 alert.showAndWait();
             } else {
             // Vorläufige Platzierung von Steinen
-                spielfeld.add(new SpielSteinView(spiel.amZug().gibFarbe()), spalte,
+                spielfeld.add(new SpielSteinView(farbe), spalte,
                     spielfeld.getRowCount() - spiel.gibSpielbrett().gibErstesFreiesFeld(spalte));
                     
                 //checke ob gewonnen wurde
