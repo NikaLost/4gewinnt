@@ -8,20 +8,30 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.*;
+import javafx.scene.text.Text;
 import javafx.scene.control.*;
 import java.util.Optional;
 
 
 public class ControllerStart {
-    private Spiel spiel = new Spiel();
+    private Spiel spiel;
     
     @FXML
     private GridPane spielfeld;
     
     @FXML
     private ListView<String> spielerListe;
+    private ObservableList<String> spielerNamen;
     
-    private ObservableList<String> spielerNamen = FXCollections.observableArrayList();
+    @FXML
+    private Text maxNumPlayers;
+    @FXML
+    private Text curNumPlayers;
+    
+    public ControllerStart() {
+        spiel = new Spiel();
+        spielerNamen = FXCollections.observableArrayList();
+    }
     
     @FXML
     public void spielerHinzufugen() {
@@ -33,10 +43,15 @@ public class ControllerStart {
             spiel.addSpieler(result.get());
             spielerNamen.add(result.get());
             spielerListe.setItems(spielerNamen);
+            curNumPlayers.setText(Integer.toString(spielerNamen.size()));
         }
     }
-
     
+    //@FXML
+    //public void initialize() {
+    //    maxNumPlayers.setText(Integer.toString(spiel.ANZ_SPIELER));
+    //    curNumPlayers.setText(Integer.toString(spielerNamen.size()));
+    //}
     
     
 }
