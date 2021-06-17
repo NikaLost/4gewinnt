@@ -79,6 +79,14 @@ public class ControllerStart {
         }
     }
     
+    @FXML void spielerLoeschen() {
+        String item = spielerListe.getSelectionModel().getSelectedItem();
+        if (item != null) {
+            spielerNamen.remove(item);
+            curNumPlayers.setText(Integer.toString(spielerNamen.size()));
+        }
+    }
+    
     @FXML
     public void spielStarten(){
         if (spielerNamen.size() != spiel.ANZ_SPIELER) {

@@ -10,14 +10,14 @@
 <?import javafx.scene.text.Text?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="311.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerStart">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerStart">
    <children>
-      <Text layoutX="50.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4 gewinnt">
+      <Text layoutX="108.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4 gewinnt">
          <font>
             <Font name="Comic Sans MS Bold" size="43.0" />
          </font>
       </Text>
-      <MenuBar layoutX="26.0" layoutY="323.0">
+      <MenuBar layoutX="51.0" layoutY="294.0">
         <menus>
           <Menu mnemonicParsing="false" text="Modus">
             <items>
@@ -26,21 +26,22 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="98.0" layoutY="129.0" mnemonicParsing="false" onAction="#spielerHinzufugen" text="Spieler hinzufügen" />
-      <Text layoutX="55.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" />
-      <Text layoutX="175.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="klassisch">
+      <Button layoutX="285.0" layoutY="163.0" mnemonicParsing="false" onAction="#spielerHinzufugen" text="Spieler hinzufügen" />
+      <Text layoutX="50.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" />
+      <Text layoutX="233.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="klassisch">
          <font>
             <Font name="Segoe UI Italic" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="curNumPlayers" layoutX="199.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text layoutX="218.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="von" />
-      <Text fx:id="maxNumPlayers" layoutX="248.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
-      <Button fx:id="losButton" layoutX="210.0" layoutY="312.0" mnemonicParsing="false" onAction="#spielStarten" text="LOS!">
+      <Text fx:id="curNumPlayers" layoutX="194.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text layoutX="213.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="von" />
+      <Text fx:id="maxNumPlayers" layoutX="243.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
+      <Button fx:id="losButton" layoutX="303.0" layoutY="294.0" mnemonicParsing="false" onAction="#spielStarten" text="LOS!">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Button>
-      <ListView fx:id="spielerListe" layoutX="56.0" layoutY="198.0" prefHeight="95.0" prefWidth="200.0" />
+      <ListView fx:id="spielerListe" layoutX="51.0" layoutY="163.0" prefHeight="95.0" prefWidth="200.0" />
+      <Button layoutX="294.0" layoutY="198.0" mnemonicParsing="false" onAction="#spielerLoeschen" text="Spieler löschen" />
    </children>
 </Pane>

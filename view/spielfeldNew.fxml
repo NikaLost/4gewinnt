@@ -8,11 +8,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerSpiel">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerSpiel">
    <children>
       <GridPane fx:id="spielfeld" layoutX="8.0" layoutY="103.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0">
          <columnConstraints>
@@ -256,11 +257,6 @@
             <Button fx:id="b0" mnemonicParsing="false" onAction="#addStein" text="Button" GridPane.columnIndex="0" />
          </children>
       </GridPane>
-      <Text fx:id="amZugText" layoutX="104.0" layoutY="550.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler X ist am Zug!" textAlignment="CENTER">
-         <font>
-            <Font name="Comic Sans MS Bold" size="20.0" />
-         </font>
-      </Text>
       <Text layoutX="125.0" layoutY="47.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="4 gewinnt" textAlignment="CENTER">
          <font>
             <Font name="Comic Sans MS Bold" size="36.0" />
@@ -271,5 +267,14 @@
             <Font name="Segoe UI Italic" size="28.0" />
          </font>
       </Text>
+      <VBox fx:id="amZugBox" layoutX="8.0" layoutY="514.0" prefHeight="50.0" prefWidth="400.0">
+         <children>
+            <Text fx:id="amZugText" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler X ist am Zug!" textAlignment="CENTER">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
    </children>
 </Pane>

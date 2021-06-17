@@ -9,6 +9,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import java.util.Optional;
 import javafx.scene.text.Text;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.*;
 
 
@@ -21,6 +22,9 @@ public class ControllerSpiel {
     
     @FXML
     private Text amZugText;
+    
+    @FXML
+    private VBox amZugBox;
     
     
     /**
@@ -63,7 +67,9 @@ public class ControllerSpiel {
         amZugText.setText(spiel.amZug().gibName() + AM_ZUG_TEXT);
     }
 
-    
+    public void initialize(){
+        amZugBox.setAlignment(Pos.CENTER);
+    }
     
     
 }
