@@ -11,10 +11,14 @@ import java.util.Optional;
 import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.*;
+import java.util.LinkedList;
 
 
 public class ControllerSpiel {
     public static final String AM_ZUG_TEXT= " ist am Zug!";
+    public static final String GEWINNER_TEXT= " hat gewonnen!";
+    public static final String NEUSTART_TEXT= "Neustart";
+    public static final String NOCHMAL_TEXT= "Nochmal !";
     private Spiel spiel;
     
     @FXML
@@ -26,6 +30,9 @@ public class ControllerSpiel {
     @FXML
     private VBox amZugBox;
     
+    @FXML
+    private Button resetButton;
+    
     
     /**
      * Methode die nach Drücken des Buttons über einer Spalte aufgerufen wird um einen Stein im
@@ -33,6 +40,9 @@ public class ControllerSpiel {
      */
     @FXML
     public void addStein(ActionEvent event) {
+        if (spiel.istBeendet()) {
+            return;
+        }
         Button gedrückt = (Button) event.getSource();
         int spalte = spielfeld.getColumnIndex(gedrückt);
         
@@ -52,14 +62,23 @@ public class ControllerSpiel {
                 if (spiel.gibGewinner() != null) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Herzlichen Glückwunsch");
-                    alert.setHeaderText(spiel.gibGewinner().gibName() 
+                    alert.setHeaderText("GLÜCKWUNSCH!!! \n" + spiel.gibGewinner().gibName() 
                     + " hat das Spiel gewonnen.");
+                    amZugText.setText(spiel.amZug().gibName() + GEWINNER_TEXT);
                     alert.showAndWait();
+                    resetButton.setText(NOCHMAL_TEXT);
                 } else {
                     amZugText.setText(spiel.amZug().gibName() + AM_ZUG_TEXT);
                 }
             }
         }
+    }
+    
+    public void neustart() {
+        spiel.reset();
+        entferneAlleSpielsteine();
+        amZugText.setText(spiel.amZug().gibName() + AM_ZUG_TEXT);
+        resetButton.setText(NEUSTART_TEXT);
     }
     
     public void initDaten(Spiel spiel) {
@@ -69,7 +88,18 @@ public class ControllerSpiel {
 
     public void initialize(){
         amZugBox.setAlignment(Pos.CENTER);
+        resetButton.setText(NEUSTART_TEXT);
     }
     
     
+    private void entferneAlleSpielsteine() {
+        LinkedList<SpielSteinView> steine = new LinkedList();
+        //suche alle Steine in der GUI
+        for (Node children : spielfeld.getChildren()) {
+            if (children.getClass() == SpielSteinView.class) {
+                steine.add((SpielSteinView) children);
+            }
+        }
+        spielfeld.getChildren().removeAll(steine);
+    }
 }

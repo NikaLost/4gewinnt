@@ -16,12 +16,14 @@ public class Spiel
     private int amZug;
     private LinkedList<Farbe> farbenAuswahl;
     private Spieler gewinner;
+    private boolean beendet;
     
     
     Spiel() {
         this.spieler = new Spieler[ANZ_SPIELER];
         this.spielbrett = new Spielbrett();
         this.farbenAuswahl = new LinkedList();
+        this.beendet = false;
         amZug = 0;
         for (Farbe farbe : Farbe.values()) {
             farbenAuswahl.add(farbe);
@@ -38,10 +40,11 @@ public class Spiel
     }
     
     public boolean einwerfen (int spalte) {
-        if (spieler[amZug].einwerfenIn(spielbrett, spalte)) {
+        if (!spielbrett.istVoll(spalte)) {
+            spieler[amZug].einwerfenIn(spielbrett, spalte);
             if (spielbrett.gewinnReihe()) {
                 gewinner = spieler[amZug];
-                naechsterSpieler();
+                beendet = true;
             } else {
                 naechsterSpieler();
             }
@@ -64,5 +67,23 @@ public class Spiel
     
     public Spieler gibGewinner() {
         return this.gewinner;
+    }
+    
+    public boolean istBeendet() {
+        return this.beendet;
+    }
+    
+    public void reset() {
+        //reset spielbrett
+        spielbrett = new Spielbrett();
+        //anfangen darf spieler rechts von gewinner
+        naechsterSpieler();
+        //alle spielsteine wieder zurück
+        for (Spieler sp : spieler) {
+            sp.spielsteineAuffrischen(STANDARD_ANZ_SPIELSTEINE);
+        }
+        beendet = false;
+        gewinner = null;
+        
     }
 }

@@ -6,30 +6,33 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerSpiel">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerSpiel">
    <children>
-      <GridPane fx:id="spielfeld" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <GridPane fx:id="spielfeld" layoutX="8.0" layoutY="103.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0">
+         <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="-Infinity" minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="-Infinity" minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
-        </rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <ImageView fitHeight="57.14" fitWidth="57.14" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                <GridPane.margin>
@@ -244,14 +247,41 @@
                   <Image url="@feld.png" />
                </image>
             </ImageView>
-            <Button fx:id="b3" mnemonicParsing="false" onAction="#addStein" text="Button" GridPane.columnIndex="3" />
-            <Button fx:id="b1" mnemonicParsing="false" onAction="#addStein" text="Button" GridPane.columnIndex="1" />
-            <Button fx:id="b2" mnemonicParsing="false" onAction="#addStein" text="Button" GridPane.columnIndex="2" />
-            <Button fx:id="b4" mnemonicParsing="false" onAction="#addStein" text="Button" GridPane.columnIndex="4" />
-            <Button fx:id="b5" mnemonicParsing="false" onAction="#addStein" text="Button" GridPane.columnIndex="5" />
-            <Button fx:id="b6" mnemonicParsing="false" onAction="#addStein" text="Button" GridPane.columnIndex="6" />
-            <Button fx:id="b0" mnemonicParsing="false" onAction="#addStein" text="Button" GridPane.columnIndex="0" />
+            <Button fx:id="b3" mnemonicParsing="false" onAction="#addStein" text="\\/" GridPane.columnIndex="3" />
+            <Button fx:id="b1" mnemonicParsing="false" onAction="#addStein" text="\\/" GridPane.columnIndex="1" />
+            <Button fx:id="b2" mnemonicParsing="false" onAction="#addStein" text="\\/" GridPane.columnIndex="2" />
+            <Button fx:id="b4" mnemonicParsing="false" onAction="#addStein" text="\\/" GridPane.columnIndex="4" />
+            <Button fx:id="b5" mnemonicParsing="false" onAction="#addStein" text="\\/" GridPane.columnIndex="5" />
+            <Button fx:id="b6" mnemonicParsing="false" onAction="#addStein" text="\\/" GridPane.columnIndex="6" />
+            <Button fx:id="b0" mnemonicParsing="false" onAction="#addStein" text="\\/" GridPane.columnIndex="0" />
          </children>
       </GridPane>
+      <Text layoutX="125.0" layoutY="47.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="4 gewinnt" textAlignment="CENTER">
+         <font>
+            <Font name="Comic Sans MS Bold" size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="209.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="klassisch">
+         <font>
+            <Font name="Segoe UI Italic" size="28.0" />
+         </font>
+      </Text>
+      <VBox fx:id="amZugBox" layoutX="8.0" layoutY="514.0" prefHeight="50.0" prefWidth="400.0">
+         <children>
+            <Text fx:id="amZugText" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler X ist am Zug!" textAlignment="CENTER">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Text>
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#neustart" text="Nochmal !">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
-</VBox>
+</Pane>

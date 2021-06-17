@@ -45,7 +45,11 @@ public class Spieler
     public int gibAnzSpielsteine() {
         return this.inventar.size();
     }
-
+    
+    public void spielsteineAuffrischen(int anzahlSpielsteine) {
+        this.inventar = new Stack();
+        initSpielsteine(anzahlSpielsteine);
+    }
     
     private void initSpielsteine(int anzahl) {
         for (int i = 0; i < anzahl; i++) {

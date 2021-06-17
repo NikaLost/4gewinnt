@@ -187,7 +187,7 @@ public class Spielbrett
     /**
      * Falls ein Spielstein in der obersten Zeile einer Spalte liegt, ist die Spalte voll.
      */
-    private boolean istVoll(int spalte) {
+    public boolean istVoll(int spalte) {
         return !felder[OBERSTE_ZEILE][spalte].istFrei();
     }
     
