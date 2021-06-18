@@ -261,7 +261,7 @@
             <Font name="Comic Sans MS Bold" size="36.0" />
          </font>
       </Text>
-      <Text layoutX="209.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="klassisch">
+      <Text fx:id="modusText" layoutX="209.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="klassisch">
          <font>
             <Font name="Segoe UI Italic" size="28.0" />
          </font>

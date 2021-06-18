@@ -35,9 +35,14 @@ public class ControllerStart {
     @FXML
     private Button losButton;
     
+    @FXML
+    private ChoiceBox modusWahl;
+    private ObservableList<Modus> modusNamen;
+    
     public ControllerStart() {
-        spiel = new Spiel();
+        spiel = new Spiel(Modus.KLASSISCH);
         spielerNamen = FXCollections.observableArrayList();
+        modusNamen = FXCollections.observableArrayList();
     }
     
     @FXML
@@ -95,7 +100,7 @@ public class ControllerStart {
             alert.setHeaderText("Es sind noch nicht genügend Spieler. Füge weitere Spieler hinzu.");
             alert.showAndWait();
         } else {
-            spiel = new Spiel();
+            spiel = new Spiel((Modus) modusWahl.getSelectionModel().getSelectedItem());
             for (String spielerName : spielerNamen) {
                 spiel.addSpieler(spielerName);
             }
@@ -139,6 +144,16 @@ public class ControllerStart {
         catch(Exception e)    {
             e.printStackTrace();
         }
+    }
+    
+    public void initialize() {
+        //füge alle verfügbaren Modi der Auswahl hinzu
+        for (Modus modus : Modus.values()) {
+            modusNamen.add(modus);
+        }
+        modusWahl.getItems().addAll(modusNamen);
+        //voreingestellter modus
+        modusWahl.getSelectionModel().select(Modus.KLASSISCH);
     }
     
 }

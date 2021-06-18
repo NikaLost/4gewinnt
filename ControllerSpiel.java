@@ -15,10 +15,10 @@ import java.util.LinkedList;
 
 
 public class ControllerSpiel {
-    public static final String AM_ZUG_TEXT= " ist am Zug!";
-    public static final String GEWINNER_TEXT= " hat gewonnen!";
-    public static final String NEUSTART_TEXT= "Neustart";
-    public static final String NOCHMAL_TEXT= "Nochmal !";
+    public static final String AM_ZUG_TEXT = " ist am Zug!";
+    public static final String GEWINNER_TEXT = " hat gewonnen!";
+    public static final String NEUSTART_TEXT = "Neustart";
+    public static final String NOCHMAL_TEXT = "Nochmal !";
     private Spiel spiel;
     
     @FXML
@@ -26,6 +26,9 @@ public class ControllerSpiel {
     
     @FXML
     private Text amZugText;
+    
+    @FXML
+    private Text modusText;
     
     @FXML
     private VBox amZugBox;
@@ -86,6 +89,7 @@ public class ControllerSpiel {
     public void initDaten(Spiel spiel) {
         this.spiel = spiel;
         amZugText.setText(spiel.amZug().gibName() + AM_ZUG_TEXT);
+        modusText.setText(spiel.getModus().toString());
     }
 
     public void initialize(){

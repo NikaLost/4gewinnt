@@ -11,19 +11,24 @@ public class Spiel
     public static final int ANZ_SPIELER = 2;
     public static final int STANDARD_ANZ_SPIELSTEINE = 21;
     public static final int STANDARD_ANZ_GEWINN = 4;
+    public static final int ERSTE_RUNDE = 1;
     private Spieler[] spieler;
     private Spielbrett spielbrett;
     private int amZug;
     private LinkedList<Farbe> farbenAuswahl;
     private Spieler gewinner;
     private boolean beendet;
+    private Modus modus;
+    private int runde;
     
     
-    Spiel() {
+    Spiel(Modus modus) {
         this.spieler = new Spieler[ANZ_SPIELER];
         this.spielbrett = new Spielbrett();
         this.farbenAuswahl = new LinkedList();
         this.beendet = false;
+        this.modus = modus;
+        runde = ERSTE_RUNDE;
         amZug = 0;
         for (Farbe farbe : Farbe.values()) {
             farbenAuswahl.add(farbe);
@@ -40,6 +45,8 @@ public class Spiel
     }
     
     public boolean einwerfen (int spalte) {
+        //merke runden-nr
+        int aktRunde = runde;
         if (!spielbrett.istVoll(spalte)) {
             spieler[amZug].einwerfenIn(spielbrett, spalte);
             if (spielbrett.gewinnReihe()) {
@@ -58,7 +65,26 @@ public class Spiel
     }
     
     public void naechsterSpieler() {
-        amZug = (amZug + 1) % ANZ_SPIELER;
+        switch (modus) {
+            case KLASSISCH:
+                amZug = (amZug + 1) % ANZ_SPIELER;
+                runde += 1;
+                break;
+                
+            case ZWEI_STEINE:
+                //bei 2 steine platzieren, muss rundenazahl immer gerade sein
+                if (runde % 2 == 0) {
+                    amZug = (amZug + 1) % ANZ_SPIELER;
+                    runde += 1;
+                    break;
+                } else {
+                    runde += 1;
+                    break;
+                }
+                
+            default:
+                break;
+        }
     }
     
     public Spielbrett gibSpielbrett() {
@@ -84,6 +110,14 @@ public class Spiel
         }
         beendet = false;
         gewinner = null;
-        
+        runde = ERSTE_RUNDE;
+    }
+    
+    public Modus getModus() {
+        return this.modus;
+    }
+    
+    public void setModus(Modus modus) {
+        this.modus = modus;
     }
 }
