@@ -8,7 +8,7 @@
  */
 public enum Farbe
 {
-    GELB("yellow"), ROT("red");
+    GELB("yellow"), ROT("red"), GRUEN("green");
     
     String farbe;
     

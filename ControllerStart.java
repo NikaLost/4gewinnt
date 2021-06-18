@@ -40,6 +40,7 @@ public class ControllerStart {
     private ObservableList<Modus> modusNamen;
     
     public ControllerStart() {
+        //standardmäßig ein klassiche spiel
         spiel = new Spiel(Modus.KLASSISCH);
         spielerNamen = FXCollections.observableArrayList();
         modusNamen = FXCollections.observableArrayList();
@@ -48,7 +49,7 @@ public class ControllerStart {
     @FXML
     public void spielerHinzufugen() {
         //max. Anz Spieler
-        if (spielerNamen.size() >= spiel.ANZ_SPIELER)
+        if (spielerNamen.size() >= spiel.benoetigteSpieler())
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Fehler");
@@ -74,10 +75,9 @@ public class ControllerStart {
                     alert.showAndWait();
                     //füge Spieler hinzu
                 } else {
-                    spiel.addSpieler(spielerName);
                     spielerNamen.add(spielerName);
                     spielerListe.setItems(spielerNamen);
-                    maxNumPlayers.setText(Integer.toString(spiel.ANZ_SPIELER));
+                    maxNumPlayers.setText(Integer.toString(spiel.benoetigteSpieler()));
                     curNumPlayers.setText(Integer.toString(spielerNamen.size()));
                 }
             }
@@ -104,10 +104,14 @@ public class ControllerStart {
     
     @FXML
     public void spielStarten(){
-        if (spielerNamen.size() != spiel.ANZ_SPIELER) {
+        if (spielerNamen.size() != spiel.benoetigteSpieler()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Fehler");
-            alert.setHeaderText("Es sind noch nicht genügend Spieler. Füge weitere Spieler hinzu.");
+            if (spielerNamen.size() < spiel.benoetigteSpieler()) {
+                alert.setHeaderText("Es sind noch nicht genügend Spieler. Füge weitere Spieler hinzu.");
+            } else {
+                alert.setHeaderText("Es sind zu viele Spieler. Entferne Spieler.");
+            }
             alert.showAndWait();
         } else {
             spiel = new Spiel((Modus) modusWahl.getSelectionModel().getSelectedItem());
@@ -164,6 +168,17 @@ public class ControllerStart {
         modusWahl.getItems().addAll(modusNamen);
         //voreingestellter modus
         modusWahl.getSelectionModel().select(Modus.KLASSISCH);
+        //AcitionListener hinzufügen, der merkt, wenn eine neue Auswahl getroffen wurde
+        modusWahl.setOnAction(event -> {
+            modusWahl();
+        });
+    }
+    
+    @FXML
+    public void modusWahl() {
+        Modus modus = (Modus) modusWahl.getSelectionModel().getSelectedItem();
+        spiel.setModus(modus);
+        maxNumPlayers.setText(Integer.toString(spiel.benoetigteSpieler()));
     }
     
 }

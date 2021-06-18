@@ -8,7 +8,7 @@ import java.util.LinkedList;
  */
 public class Spiel
 {
-    public static final int ANZ_SPIELER = 2;
+    public static final int STANDARD_ANZ_SPIELER = 2;
     public static final int STANDARD_ANZ_SPIELSTEINE = 21;
     public static final int STANDARD_ANZ_GEWINN = 4;
     public static final int ERSTE_RUNDE = 1;
@@ -23,11 +23,11 @@ public class Spiel
     
     
     Spiel(Modus modus) {
-        this.spieler = new Spieler[ANZ_SPIELER];
+        this.spieler = new Spieler[STANDARD_ANZ_SPIELER];
         this.spielbrett = new Spielbrett();
         this.farbenAuswahl = new LinkedList();
         this.beendet = false;
-        this.modus = modus;
+        setModus(modus);
         runde = ERSTE_RUNDE;
         amZug = 0;
         for (Farbe farbe : Farbe.values()) {
@@ -66,15 +66,10 @@ public class Spiel
     
     public void naechsterSpieler() {
         switch (modus) {
-            case KLASSISCH:
-                amZug = (amZug + 1) % ANZ_SPIELER;
-                runde += 1;
-                break;
-                
             case ZWEI_STEINE:
                 //bei 2 steine platzieren, muss rundenazahl immer gerade sein
                 if (runde % 2 == 0) {
-                    amZug = (amZug + 1) % ANZ_SPIELER;
+                    amZug = (amZug + 1) % spieler.length;
                     runde += 1;
                     break;
                 } else {
@@ -83,6 +78,8 @@ public class Spiel
                 }
                 
             default:
+                amZug = (amZug + 1) % spieler.length;
+                runde += 1;
                 break;
         }
     }
@@ -119,5 +116,25 @@ public class Spiel
     
     public void setModus(Modus modus) {
         this.modus = modus;
+        switch (modus) {
+            case DREI_SPIELER:
+                spieler = new Spieler[3];
+                break;
+                
+            default:
+                spieler = new Spieler[STANDARD_ANZ_SPIELER];
+                break;
+        }
+    }
+    
+    /**
+     * Setzt alle Spieler zurück und legt die Anzahl an benötigten Spielern fest.
+     */
+    public void neueSpieleranzahl(int anzahl) {
+        this.spieler = new Spieler[anzahl];
+    }
+    
+    public int benoetigteSpieler() {
+        return this.spieler.length;
     }
 }

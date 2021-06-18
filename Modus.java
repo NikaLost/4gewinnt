@@ -8,7 +8,8 @@
 public enum Modus
 {
     KLASSISCH("klassisch", "Das ist die klassiche Variante von 4 gewinnt."),
-    ZWEI_STEINE("Nimm 2!", "Bei dieser Variante von 4 gewinnt darf jeder Spieler immer 2 Spielsteine hintereinander setzen.");
+    ZWEI_STEINE("Nimm 2!", "Bei dieser Variante von 4 gewinnt darf jeder Spieler immer 2 Spielsteine hintereinander setzen."),
+    DREI_SPIELER("Trio", "Bei dieser Variante von 4 gewinnt spielen 3 Spieler anstatt 2 Spieler auf dem gleichen Spielfeld gegeneinander");
     
     String modus;
     String info;
