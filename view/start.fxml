@@ -32,5 +32,6 @@
             <Font name="Comic Sans MS" size="18.0" />
          </font>
       </Text>
+      <Button layoutX="329.0" layoutY="101.0" mnemonicParsing="false" onAction="#modusInfo" text="Info" />
    </children>
 </Pane>

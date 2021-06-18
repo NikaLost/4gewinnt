@@ -7,16 +7,23 @@
  */
 public enum Modus
 {
-    KLASSISCH("klassisch"), ZWEI_STEINE("Nimm 2!");
+    KLASSISCH("klassisch", "Das ist die klassiche Variante von 4 gewinnt."),
+    ZWEI_STEINE("Nimm 2!", "Bei dieser Variante von 4 gewinnt darf jeder Spieler immer 2 Spielsteine hintereinander setzen.");
     
     String modus;
+    String info;
     
-    Modus (String modus) {
+    Modus (String modus, String info) {
         this.modus = modus;
+        this.info = info;
     }
     
     @Override
     public String toString() {
         return modus;
+    }
+    
+    public String getInfoText() {
+        return this.info;
     }
 }

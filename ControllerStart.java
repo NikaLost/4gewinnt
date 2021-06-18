@@ -93,6 +93,16 @@ public class ControllerStart {
     }
     
     @FXML
+    public void modusInfo() {
+        Modus aktModus = (Modus) modusWahl.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(aktModus.toString());
+        alert.setHeaderText(aktModus.getInfoText());
+        alert.showAndWait();
+    }
+    
+    
+    @FXML
     public void spielStarten(){
         if (spielerNamen.size() != spiel.ANZ_SPIELER) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
