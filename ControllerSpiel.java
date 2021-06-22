@@ -23,6 +23,7 @@ public class ControllerSpiel {
     public static final String GEWINNER_TEXT = " hat gewonnen!";
     public static final String NEUSTART_TEXT = "Neustart";
     public static final String NOCHMAL_TEXT = "Nochmal !";
+    public static final String UNENTSCHIEDEN_TEXT = "UNENTSCHIEDEN!";
     private Spiel spiel;
     
     @FXML
@@ -78,6 +79,13 @@ public class ControllerSpiel {
                     alert.setHeaderText("GLÜCKWUNSCH!!! \n" + spiel.gibGewinner().gibName() 
                     + " hat das Spiel gewonnen.");
                     amZugText.setText(spiel.amZug().gibName() + GEWINNER_TEXT);
+                    alert.showAndWait();
+                    resetButton.setText(NOCHMAL_TEXT);
+                } else if (spiel.gibSpielbrett().istVollBesetzt()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Unentschieden");
+                    alert.setHeaderText("Das Feld ist voll es können keine weiteren Steine platziert werden!");
+                    amZugText.setText(UNENTSCHIEDEN_TEXT);
                     alert.showAndWait();
                     resetButton.setText(NOCHMAL_TEXT);
                 } else {
