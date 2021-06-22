@@ -14,6 +14,8 @@ import javafx.scene.control.*;
 import java.util.LinkedList;
 import javafx.scene.paint.*;
 import javafx.scene.shape.Circle;
+import javafx.scene.media.*;
+import java.net.URL;
 
 
 public class ControllerSpiel {
@@ -67,6 +69,7 @@ public class ControllerSpiel {
             // Vorläufige Platzierung von Steinen
                 spielfeld.add(new SpielSteinView(farbe), spalte,
                     spielfeld.getRowCount() - spiel.gibSpielbrett().gibErstesFreiesFeld(spalte));
+                playSound("test.mp3");
                     
                 //checke ob gewonnen wurde
                 if (spiel.gibGewinner() != null) {
@@ -115,5 +118,14 @@ public class ControllerSpiel {
             }
         }
         spielfeld.getChildren().removeAll(steine);
+    }
+    
+    private static void playSound(String sound){
+        // cl is the ClassLoader for the current class, ie. CurrentClass.class.getClassLoader();
+        URL file = ControllerSpiel.class.getClassLoader().getResource(sound);
+        System.out.println(file.toString());
+        final Media media = new Media(file.toString());
+        final MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
     }
 }
