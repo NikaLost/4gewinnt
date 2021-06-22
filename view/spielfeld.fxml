@@ -6,13 +6,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerSpiel">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerSpiel">
    <children>
       <GridPane fx:id="spielfeld" layoutX="8.0" layoutY="103.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0">
          <columnConstraints>
@@ -268,11 +270,19 @@
       </Text>
       <VBox fx:id="amZugBox" layoutX="8.0" layoutY="514.0" prefHeight="50.0" prefWidth="400.0">
          <children>
-            <Text fx:id="amZugText" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler X ist am Zug!" textAlignment="CENTER">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="20.0" />
-               </font>
-            </Text>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <Text fx:id="amZugText" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler X ist am Zug!" textAlignment="CENTER">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Circle fx:id="colorCircle" fill="WHITE" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+               <VBox.margin>
+                  <Insets left="90.0" />
+               </VBox.margin>
+            </HBox>
             <Button fx:id="resetButton" mnemonicParsing="false" onAction="#neustart" text="Nochmal !">
                <VBox.margin>
                   <Insets top="30.0" />

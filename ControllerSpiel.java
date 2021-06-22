@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.*;
 import java.util.LinkedList;
+import javafx.scene.paint.*;
+import javafx.scene.shape.Circle;
 
 
 public class ControllerSpiel {
@@ -35,6 +37,9 @@ public class ControllerSpiel {
     
     @FXML
     private Button resetButton;
+    
+    @FXML
+    private Circle colorCircle;
     
     
     /**
@@ -74,6 +79,7 @@ public class ControllerSpiel {
                     resetButton.setText(NOCHMAL_TEXT);
                 } else {
                     amZugText.setText(spiel.amZug().gibName() + AM_ZUG_TEXT);
+                    colorCircle.setFill(Paint.valueOf(spiel.amZug().gibFarbe().toString()));
                 }
             }
         }
@@ -90,6 +96,8 @@ public class ControllerSpiel {
         this.spiel = spiel;
         amZugText.setText(spiel.amZug().gibName() + AM_ZUG_TEXT);
         modusText.setText(spiel.getModus().toString());
+        colorCircle.setFill(Paint.valueOf(spiel.amZug().gibFarbe().toString()));
+        
     }
 
     public void initialize(){
