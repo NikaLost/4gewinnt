@@ -8,8 +8,7 @@ import org.junit.Test;
 /**
  * Die Test-Klasse SpielbrettTest.
  *
- * @author  (Ihr Name)
- * @version (eine Versionsnummer oder ein Datum)
+ * Enthält Tests für die Facklasse "Spielbrett"
  */
 public class SpielbrettTest
 {
@@ -37,6 +36,9 @@ public class SpielbrettTest
         steinG = new Spielstein(Farbe.GELB);
     }
     
+    /**
+     * Testet Gewinnreihe horizontal links.
+     */
     @Test
     public void testeHorizontaleGewinn() {
         brett.platzieren(steinR, 0);
@@ -46,6 +48,9 @@ public class SpielbrettTest
         assertTrue(brett.gewinnReihe());
     }
     
+    /**
+     * Testet Gewinnreihe Horizintal mittig.
+     */
     @Test
     public void testeHorizontaleGewinn2() {
         brett.platzieren(steinR, 2);
@@ -55,6 +60,9 @@ public class SpielbrettTest
         assertTrue(brett.gewinnReihe());
     }
     
+    /**
+     * Testet Gwinnreihe horizontal rechts.
+     */
     @Test
     public void testeHorizontaleGewinn3() {
         brett.platzieren(steinR, 2);
@@ -69,6 +77,9 @@ public class SpielbrettTest
         assertTrue(brett.gewinnReihe());
     }
     
+    /**
+     * Teste Gewinnreihe vertikal links.
+     */
     @Test
     public void testeVertikalGewinn1() {
         brett.platzieren(steinR, 0);
@@ -78,6 +89,9 @@ public class SpielbrettTest
         assertTrue(brett.gewinnReihe());
     }
     
+    /**
+     * Teste Gewinnreihe vertikal links mit Unterbrechung.
+     */
     @Test
     public void testeVertikalGewinn2() {
         brett.platzieren(steinR, 0);
@@ -89,6 +103,9 @@ public class SpielbrettTest
         assertTrue(brett.gewinnReihe());
     }
     
+    /**
+     * Teste Gewinnreihe diagonal
+     */
     @Test
     public void testeDiagonalGewinn1() {
         brett.platzieren(steinR, 0);
@@ -105,6 +122,9 @@ public class SpielbrettTest
         assertTrue(brett.gewinnReihe());
     }
     
+    /**
+     * Testet Gewinnreihe diagonal mit Lücke.
+     */
     @Test
     public void testDiagonaleGewinnLücke() {
         brett.platzieren(steinG, 0);
